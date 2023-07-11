@@ -1,38 +1,50 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
 import streamlit as st
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+import matplotlib.pyplot as plt
 
-"""
-# Welcome to Streamlit!
+# Load the data from a file
+@st.cache  # Cache the data to avoid reloading on every run
+def load_data(filename):
+    df = pd.read_csv(filename)
+    return df
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+# Calculate TF-IDF scores
+def calculate_tfidf(data):
+    vectorizer = TfidfVectorizer()
+    tfidf_scores = vectorizer.fit_transform(data)
+    return tfidf_scores
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# Plot the graph
+def plot_graph(x, y):
+    fig, ax = plt.subplots()
+    ax.barh(x, y)
+    ax.set_xlabel('TF-IDF Score')
+    ax.set_ylabel('Term')
+    ax.set_title('TF-IDF Scores')
+    st.pyplot(fig)
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Main function
+def main():
+    st.title("TF-IDF Visualization")
 
+    # Load data
+    filename = 'output_tf_idf_file.txt'
+    df = load_data(filename)
 
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+    # Display the raw data
+    st.subheader("Raw Data")
+    st.dataframe(df)
 
-    Point = namedtuple('Point', 'x y')
-    data = []
+    # Preprocess the data
+    preprocessed_data = df['text_column'].tolist()
 
-    points_per_turn = total_points / num_turns
+    # Calculate TF-IDF scores
+    tfidf_scores = calculate_tfidf(preprocessed_data)
 
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
+    # Extract terms and scores
+    feature_names = vectorizer.get_feature_names()
+    scores = tfidf_scores.toarray()[0]
 
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+    # Create a dataframe for visualization
+    df_scores = pd.DataFrame({'Term': feature_names, 'TF-IDF Score'
