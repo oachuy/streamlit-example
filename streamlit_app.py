@@ -47,7 +47,7 @@ def main():
     scores = tfidf_scores.toarray()[0]
 
     # Create a dataframe for visualization
-     plot_graph(df_scores['Term'], df_scores['TF-IDF Score'])
+    plot_graph(df_scores['Term'], df_scores['TF-IDF Score'])
 
 if __name__ == '__main__':
     main()
