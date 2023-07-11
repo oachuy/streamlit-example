@@ -1,5 +1,5 @@
 altair
 pandas
 streamlit
-sklearn.feature_extraction.text
-matplotlib.pyplot
+sklearn
+matplotlib
