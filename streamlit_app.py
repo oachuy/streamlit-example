@@ -12,22 +12,6 @@ def plot_graph(data):
 
 def main():
     st.title("TF-IDF Visualization")
-    st.title("TF-IDF Visualization")
-
-    # Load data
-    filename = 'your_data_file.csv'
-    df = pd.read_csv(filename)
-
-    # Display the raw data
-    st.subheader("Raw Data")
-    st.dataframe(df)
-
-    # Debug statement to inspect column names
-    st.write("Column Names:", df.columns)
-
-    # Plot the graph
-    plot_graph(df)
-    
     # Load data
     filename = 'output_tf_idf_file.txt'
     df = pd.read_csv(filename)
@@ -35,6 +19,7 @@ def main():
     # Display the raw data
     st.subheader("Raw Data")
     st.dataframe(df)
+    st.write("Column Names:", df.columns)
 
     # Plot the graph
     plot_graph(df)
