@@ -14,7 +14,7 @@ def main():
     st.title("TF-IDF Visualization")
 
     # Load data
-    filename = 'output_tf_idf_file.txt'
+    filename = 'your_data_file.csv'
     df = pd.read_csv(filename)
 
     # Display the raw data
