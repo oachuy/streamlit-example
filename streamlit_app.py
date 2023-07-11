@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def plot_graph(data):
     fig, ax = plt.subplots()
-    ax.barh(data['Term'], data['TF-IDF Score'])
+    ax.barh(data['Term'], data['Score'])
     ax.set_xlabel('TF-IDF Score')
     ax.set_ylabel('Term')
     ax.set_title('TF-IDF Scores')
