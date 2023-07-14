@@ -20,7 +20,7 @@ def remove_string_special_characters(s):
     # Remove start and end white spaces
     stripped = stripped.strip()
     if stripped != '':
-            return stripped.lower()
+        return stripped.lower()
 
 def main():
     st.title("TF-IDF Visualization")
@@ -32,35 +32,36 @@ def main():
         txt1[i] = ' '.join([x for
             x in nltk.word_tokenize(line) if
             ( x not in stop_words ) and ( x not in your_list )])
-     # Getting bigrams
-     vectorizer = CountVectorizer(ngram_range =(2, 2))
-     X1 = vectorizer.fit_transform(txt1)
-     features = (vectorizer.get_feature_names_out())
-     # print("\n\nX1 : \n", X1.toarray())
+    # Getting bigrams
+    vectorizer = CountVectorizer(ngram_range =(2, 2))
+    X1 = vectorizer.fit_transform(txt1)
+    features = (vectorizer.get_feature_names_out())
+    # print("\n\nX1 : \n", X1.toarray())
         
-     # Applying TFIDF
-     # You can still get n-grams here
-     vectorizer = TfidfVectorizer(ngram_range = (2, 2))
-     X2 = vectorizer.fit_transform(txt1)
-     scores = (X2.toarray())
-     # print("\n\nScores : \n", scores)
+    # Applying TFIDF
+    # You can still get n-grams here
+    vectorizer = TfidfVectorizer(ngram_range = (2, 2))
+    X2 = vectorizer.fit_transform(txt1)
+    scores = (X2.toarray())
+    # print("\n\nScores : \n", scores)
         
-     # Getting top ranking features
-     sums = X2.sum(axis = 0)
-     data1 = []
-     for col, term in enumerate(features):
-            data1.append( (term, sums[0, col] ))
+    # Getting top ranking features
+    sums = X2.sum(axis = 0)
+    data1 = []
+    for col, term in enumerate(features):
+        data1.append( (term, sums[0, col] ))
          
-     ranking = pd.DataFrame(data1, columns = ['term', 'rank'])
-     words = (ranking.sort_values('rank', ascending = False))
-     # print ("\n\nWords : \n", words.head(7))
+    ranking = pd.DataFrame(data1, columns = ['term', 'rank'])
+    words = (ranking.sort_values('rank', ascending = False))
+    # print ("\n\nWords : \n", words.head(7))
         
-     # Display the raw data
-     #st.subheader("Raw Data")
-     #st.dataframe(df)
+    # Display the raw data
+    #st.subheader("Raw Data")
+    #st.dataframe(df)
         
-     # Plot the graph
-     #plot_graph(df)
+    # Plot the graph
+    #plot_graph(df)
 
 if __name__ == '__main__':
     main()
+
