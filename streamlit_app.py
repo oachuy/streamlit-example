@@ -24,7 +24,7 @@ def remove_string_special_characters(s):
 
 def main():
     st.title("TF-IDF Visualization")
-
+    nltk.download('punkt')
     # Input the file
     txt1 = []
     with open('output_tf_idf_file.txt') as file:
