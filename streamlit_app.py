@@ -67,14 +67,14 @@ def main():
          
     ranking = pd.DataFrame(data1, columns = ['term', 'rank'])
     words = (ranking.sort_values('rank', ascending = False))
-    print ( words.head(7))
+    words= words.head(7))
         
     # Display the raw data
     #st.subheader("Raw Data")
     #st.dataframe(words)
         
     # Plot the graph
-    plot_graph(words)
+    plot_graph(words.x,words.y)
 
 if __name__ == '__main__':
     main()
