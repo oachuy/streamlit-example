@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Preprocessing
 def remove_string_special_characters(s):
@@ -21,7 +22,15 @@ def remove_string_special_characters(s):
     stripped = stripped.strip()
     if stripped != '':
         return stripped.lower()
-
+        
+def plot_graph(x, y):
+    fig, ax = plt.subplots()
+    ax.barh(x, y)
+    ax.set_xlabel('TF-IDF Score')
+    ax.set_ylabel('Term')
+    ax.set_title('TF-IDF Scores')
+    st.pyplot(fig)
+    
 def main():
     st.title("TF-IDF Visualization")
     nltk.download('punkt')
