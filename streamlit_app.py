@@ -62,10 +62,10 @@ def main():
         
     # Display the raw data
     #st.subheader("Raw Data")
-    df=st.dataframe(words)
+    st.dataframe(words)
         
     # Plot the graph
-    plot_graph(df)
+    #plot_graph(df)
 
 if __name__ == '__main__':
     main()
