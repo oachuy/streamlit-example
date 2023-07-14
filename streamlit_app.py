@@ -1,7 +1,12 @@
 import streamlit as st
+# Importing libraries
+import nltk
+import re
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 import pandas as pd
-import matplotlib.pyplot as plt
-#
+
 # Preprocessing
 def remove_string_special_characters(s):
     print('Hola')
