@@ -58,7 +58,7 @@ def main():
          
     ranking = pd.DataFrame(data1, columns = ['term', 'rank'])
     words = (ranking.sort_values('rank', ascending = False))
-    # print ("\n\nWords : \n", words.head(7))
+    print ( words.head(7))
         
     # Display the raw data
     #st.subheader("Raw Data")
