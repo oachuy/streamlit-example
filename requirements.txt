@@ -3,5 +3,4 @@ streamlit
 scikit-learn
 regex
 nltk
-sklearn
 matplotlib
