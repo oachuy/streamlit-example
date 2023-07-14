@@ -27,7 +27,6 @@ def main():
         txt1[i] = ' '.join([x for
             x in nltk.word_tokenize(line) if
             ( x not in stop_words ) and ( x not in your_list )])
-
      # Getting bigrams
      vectorizer = CountVectorizer(ngram_range =(2, 2))
      X1 = vectorizer.fit_transform(txt1)
