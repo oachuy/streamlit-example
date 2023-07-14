@@ -30,7 +30,7 @@ def main():
     your_list = []
     # Input the file
     txt1 = []
-    with open('input.txt') as file:
+    with open('output_tf_idf_file.txt') as file:
         txt1 = file.readlines()
         
     for i, line in enumerate(txt1):
