@@ -25,14 +25,14 @@ def remove_string_special_characters(s):
 def main():
     st.title("TF-IDF Visualization")
 
-    nltk.download('stopwords')
-    stop_words = set(stopwords.words('english'))
-    your_list = []
     # Input the file
     txt1 = []
     with open('output_tf_idf_file.txt') as file:
         txt1 = file.readlines()
-        
+
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('english'))
+    your_list = []     
     for i, line in enumerate(txt1):
         txt1[i] = ' '.join([x for
             x in nltk.word_tokenize(line) if
