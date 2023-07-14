@@ -74,7 +74,7 @@ def main():
     #st.dataframe(words)
         
     # Plot the graph
-    plot_graph(words.head(7))
+    plot_graph(words)
 
 if __name__ == '__main__':
     main()
