@@ -1,8 +1,6 @@
-altair
 pandas
 streamlit
 scikit-learn
-matplotlib
 re
 nltk
 sklearn
