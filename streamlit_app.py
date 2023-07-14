@@ -28,6 +28,11 @@ def main():
     nltk.download('stopwords')
     stop_words = set(stopwords.words('english'))
     your_list = []
+    # Input the file
+    txt1 = []
+    with open('input.txt') as file:
+        txt1 = file.readlines()
+        
     for i, line in enumerate(txt1):
         txt1[i] = ' '.join([x for
             x in nltk.word_tokenize(line) if
